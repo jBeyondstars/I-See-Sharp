@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+*.user
+*.userosscache
+*.suo
+*.cache
+.idea/
+*.DotSettings.user
+appsettings.*.local.json

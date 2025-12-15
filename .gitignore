@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# .NET
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+.env.*.local
+appsettings.*.local.json
+
+# Build
+build/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Misc
+*.cache
+.vercel
