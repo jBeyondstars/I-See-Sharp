@@ -1,5 +1,7 @@
 using ISeeSharp.Application;
 using ISeeSharp.Infrastructure;
+using ISeeSharp.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    using var scope = app.Services.CreateScope();
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    await context.Database.MigrateAsync();
+    await SeedData.SeedAsync(context);
 }
 
 app.UseHttpsRedirection();
