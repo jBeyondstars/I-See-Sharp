@@ -8,4 +8,4 @@ public record LeaderboardEntryDto(
     int Rank,
     string Username,
     int TotalScore,
-    int ExercisesCompleted);
+    int SessionsCompleted);

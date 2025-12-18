@@ -21,12 +21,19 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.PasswordHash)
             .IsRequired();
 
-        builder.HasIndex(u => u.Email)
-            .IsUnique();
+        builder.Property(u => u.PreferencesJson)
+            .HasColumnType("jsonb");
 
-        builder.HasIndex(u => u.Username)
-            .IsUnique();
+        builder.HasMany(u => u.SessionResults)
+            .WithOne(r => r.User)
+            .HasForeignKey(r => r.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
 
+        builder.HasIndex(u => u.Email).IsUnique();
+        builder.HasIndex(u => u.Username).IsUnique();
         builder.HasIndex(u => u.TotalScore);
+        builder.HasIndex(u => u.TotalLinesWritten);
+        builder.HasIndex(u => u.TotalXp);
+        builder.HasIndex(u => u.Level);
     }
 }

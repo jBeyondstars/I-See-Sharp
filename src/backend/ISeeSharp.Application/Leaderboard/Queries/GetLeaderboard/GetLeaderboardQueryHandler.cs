@@ -22,6 +22,6 @@ public class GetLeaderboardQueryHandler : IRequestHandler<GetLeaderboardQuery, I
             index + 1,
             user.Username,
             user.TotalScore,
-            user.ExercisesCompleted));
+            user.SessionsCompleted));
     }
 }

@@ -7,8 +7,9 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly ApplicationDbContext _context;
     private IUserRepository? _users;
-    private IExerciseRepository? _exercises;
-    private IUserExerciseResultRepository? _userExerciseResults;
+    private ISessionRepository? _sessions;
+    private ISessionFileRepository? _sessionFiles;
+    private IUserSessionResultRepository? _userSessionResults;
 
     public UnitOfWork(ApplicationDbContext context)
     {
@@ -16,9 +17,10 @@ public class UnitOfWork : IUnitOfWork
     }
 
     public IUserRepository Users => _users ??= new UserRepository(_context);
-    public IExerciseRepository Exercises => _exercises ??= new ExerciseRepository(_context);
-    public IUserExerciseResultRepository UserExerciseResults =>
-        _userExerciseResults ??= new UserExerciseResultRepository(_context);
+    public ISessionRepository Sessions => _sessions ??= new SessionRepository(_context);
+    public ISessionFileRepository SessionFiles => _sessionFiles ??= new SessionFileRepository(_context);
+    public IUserSessionResultRepository UserSessionResults =>
+        _userSessionResults ??= new UserSessionResultRepository(_context);
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
